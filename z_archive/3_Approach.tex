@@ -1,0 +1,279 @@
+\section*{3. Approach}
+\subsection*{Motivation}
+Antimicrobial resistance (AMR) is a major global threat to modern medicine, directly responsible for an estimated 1.27 million deaths and contributing to 4.95 million deaths worldwide in 2019. The economic burden is similarly severe, with projected losses of up to US \$3.4 trillion in global GDP and over US \$1 trillion in additional healthcare costs by 2050. This crisis is driven not only by the spread of resistant strains between individuals and hospitals, but also by continuous evolution within individual patients, where bacteria swap genes with other bacteria, acquire resistance genes, develop tolerance to antibiotics, and adapt to evade the immune system.
+
+Despite this we still lack the technology to predict what will happen.  At a gloabl level we cannot predict theemergence of new resistance, epidemic and pandemic strains, and which resistance mechanisms will spread. At a clinical and individual patient level we cannot predict which patients will benefit from a given antibiotic, and which will not
+and still rely on culture and sensitivity testing to guide antibiotic prescribing, technology
+that has barely changed since the early twentieth century and has poor predictive power for many invasive and chronic infections.
+
+\subsection*{Aims}
+This fellowship aims to contribute to the establishment of an end-to-end workflow 
+for predictive pathogen genomics that moves systematically from the 
+i) Mechnisms which drive emergence of global pathogen which will be resistant to new antibiotics
+ii) Testing and development of cutting edge machine learning models to predict pathogen behaviour 
+iii) Predict the clinical outcome of antibiotic treatment and resistance emergence in individual patients from a prospective clinical cohort. 
+
+\begin{enumerate}
+  \item \textbf{Understand the emergence and pathoadaptation in a global pathogen ressitant to new antibiotics}
+  \item \textbf{Develop and refine predictive models from genomes to predict antibiotic resistance and invasive disease}
+  \item \textbf{Create and test a hybrid clinical outcome model}: combine genomic prediction scores with rich clinical and microbiological history from the SputaGen prospective study to predict antibiotic treatment outcome and resistance emergence at the level of individual treatment courses.
+\end{enumerate}
+
+The overarching aim is to build and test a practical, genomics-informed prediction framework 
+that can move beyond binary "sensitive / resistant" reporting and support individualised antibiotic decisions. 
+
+\subsection*{Background}
+The Floto Laboratory, Cambridge Centre for Lung Infection (CCLI), and collaborators at 
+the Sanger Institute are world leaders in using genomics to understand pathogen evolution 
+and behaviour. Our group has shown that saltatory evolutionary changes, new genes, 
+and transcriptional reprogramming drive pathoadaptation and treatment failure 
+in \textit{Mycobacterium abscessus} and \textit{Pseudomonas aeruginosa}. 
+Recent work has:
+
+\begin{itemize}
+  \item demonstrated stepwise pathogenic evolution via horizontally acquired epigenetic regulators 
+  and convergent mutation in a constrained pathoadaptive network in \textit{M. abscessus};
+  \item identified global epidemic clones and host-specific adaptation in \textit{P. aeruginosa} 
+  driven by HGT in transcriptional regulators;
+  \item shown that antibiotic killing dynamics and tolerance are genetically encoded traits 
+  that predict patient outcome independently of conventional resistance;
+  \item developed Bacformer, a genome-scale foundation model that can read an entire bacterial genome, 
+  predict AMR with near-perfect performance on held-out isolates, and attribute phenotype to specific regions of the genome.
+\end{itemize}
+
+However, even the most advanced models have so far been developed and tested in settings 
+that do not fully capture the complexity of real-world, polyclonal, and polymicrobial infections, and they are rarely linked to prospective clinical outcome data. \textit{Klebsiella pneumoniae}, a WHO-priority ESCAPPM pathogen and major cause of global morbidity and mortality, presents a distinct and urgent challenge.It evolves through rampant HGT, capsule recombination, and acquisition of large plasmids encoding both AMR and virulence. 
+Understanding these mechanisms and incorporating them explicitly into predictive models is essential if we are to move from proof-of-concept performance to robust, clinically usable tools.
+
+This fellowship is timely because it brings together:
+
+\begin{itemize}
+  \item large, curated Klebsiella genomic and phenotypic resources, including public AMR datasets and our own curated KpSC collection;
+  \item a maturing prospective clinical cohort (SputaGen) with fully collected clinical data and a sputum biobank ready for sequencing;
+  \item a powerful foundation model (Bacformer) and complementary machine learning expertise;
+  \item a research environment (CCLI, Floto Lab, Sanger Institute) with unique strength across clinical infection, genomics, and machine learning.
+\end{itemize}
+
+\subsection*{Research Strategy and Work Packages}
+
+The research strategy is organised into three work packages that build on one another:
+
+\begin{itemize}
+  \item \textbf{WP1} delivers a detailed, mechanistic understanding of Klebsiella pathoadaptation and the datasets required for predictive modelling.
+  \item \textbf{WP2} develops and benchmarks predictive models, including but not limited to Bacformer, against these mechanistic insights and across diverse phenotypes.
+  \item \textbf{WP3} uses the refined models and translational insights to create and test a clinical prediction framework in the SputaGen cohort.
+\end{itemize}
+
+Each work package is designed to be scientifically coherent and orthogonal to the others, while providing clearly defined outputs and milestones.
+
+\subsection*{WP1. Horizontal Gene Transfer and Pathoadaptation in Klebsiella}
+
+\textbf{Rationale and Objectives}
+
+Klebsiella species, particularly \textit{K. pneumoniae}, are among the most important global AMR threats. Unlike the \textit{Mycobacterium} and \textit{Pseudomonas} species that our group has previously studied, \textit{Klebsiella} is characterised by frequent HGT, capsule recombination, and acquisition of large plasmids carrying AMR and virulence determinants. Global success of lineages such as sequence lineage 258 likely reflects a complex interplay of these processes, which are poorly understood and not adequately represented in current models.
+
+WP1 will:
+
+\begin{itemize}
+  \item define the global population structure and pathoadaptive trajectories of Klebsiella;
+  \item characterise the role of plasmids, mobile genetic elements, and structural variation in AMR, tolerance, and virulence;
+  \item generate curated, analysis-ready datasets and mechanistic hypotheses that feed directly into WP2 and WP3.
+\end{itemize}
+
+\textbf{Data Foundation}
+
+We will build on and extend a rigorously curated Klebsiella dataset that includes:
+
+\begin{itemize}
+  \item a global collection of $\sim$80{,}000 high-quality whole-genome assemblies of the \textit{K. pneumoniae} species complex (KpSC), with extensive metadata (isolation source, host, collection date, country of origin);
+  \item a large antibiotic susceptibility testing (AST) dataset for $\sim$7{,}000 Klebsiella isolates, comprising over 140{,}000 individual AST measurements across $\sim$23 antibiotics with sufficient coverage to represent the spectrum of clinically important drugs.
+\end{itemize}
+
+\textbf{Analytical Plan}
+
+My bioinformatics group, including collaborators such as Wiemann, Bruchmann, Dinan, Ruiz, and others, will perform:
+
+\begin{itemize}
+  \item core genome phylogeny and dating of key epidemic lineages;
+  \item identification of pathoadaptive genes and regulatory hotspots using GWAS-style approaches (e.g. Pyseer, hotspot analysis);
+  \item systematic characterisation of plasmid content, insertion sequences, and other mobile 
+  genetic elements using tools such as ISEscan and MGEfinder, and their association with AMR and virulence phenotypes;
+  \item integration of structural variation and HGT events into a unified framework that explains the 
+  emergence and spread of high-risk clones.
+\end{itemize}
+
+My specific focus will be leading the analysis of plasmids and HGT, distinguishing these mechanisms from the transcriptional and regulatory hotspots identified in \textit{M. abscessus} and \textit{P. aeruginosa}. Outputs from WP1 will include annotated genomes, plasmid maps, and mechanistic hypotheses (e.g. specific mobile elements or plasmid backbones linked to high-risk phenotypes) that will be directly tested in WP2's predictive models.
+
+\textbf{Risks and Mitigation}
+Key risks include heterogeneity in public data quality and incomplete metadata. We will mitigate these by applying stringent QC pipelines, leveraging our existing experience with large pathogen genomics datasets, and focusing mechanistic analyses on high-confidence subsets where needed.
+
+\subsection*{WP2. Predicting Pathogen Behaviour from Genomes}
+
+\textbf{Rationale and Objectives}
+
+WP2 focuses on predictive modelling, building on both our existing Bacformer foundation model 
+and complementary machine learning approaches to predict clinically relevant phenotypes from genomic data. 
+The objective is not only to achieve high predictive performance for AMR, tolerance, and invasive potential, 
+but also to ensure that models faithfully capture the HGT- and plasmid-driven mechanisms uncovered in WP1 and 
+can generalise across species and settings.
+
+WP2 will:
+
+\begin{itemize}
+  \item benchmark and refine Bacformer and alternative models on the curated Klebsiella datasets 
+  from WP1 and related datasets (e.g. \textit{Pseudomonas aeruginosa});
+  \item test complex phenotypes such as invasive disease vs carriage, tolerance, and multi-drug resistance;
+  \item explore hybrid architectures that integrate protein and DNA sequence, 
+  and evaluate how well they represent HGT and mobile genetic elements.
+\end{itemize}
+
+\textbf{Modelling Approach}
+
+We have already demonstrated that Bacformer can achieve AUROC/AUPRC $>0.97$ 
+for several antibiotics using only protein sequence, without prior knowledge of gene function, 
+and can attribute predictions to specific genomic regions (Figure xx and xx). 
+
+Building on this, we will:
+
+\begin{itemize}
+  \item evaluate the current protein-only model on the Klebsiella AST datasets, 
+  quantifying performance across antibiotics and lineages;
+  \item develop and test next-generation hybrid models that incorporate 
+  both protein-coding regions and non-coding DNA, including plasmids and insertion sequences;
+  \item compare Bacformer-based predictions to simpler models such as 
+  gradient-boosted trees trained on known resistance gene presence/absence (e.g. from AMRfinderPlus), 
+  as well as logistic regression or random forests using curated feature sets.
+\end{itemize}
+
+We will explicitly test whether models:
+
+\begin{itemize}
+  \item can distinguish invasive disease isolates from carriage isolates using the curated isolation source and host metadata from WP1;
+  \item capture plasmid-borne determinants as coherent embeddings across sequence lineages and species, consistent with HGT;
+  \item are robust to errors and biases introduced by gene-calling pipelines, 
+  particularly in the presence of insertions and structural variation.
+\end{itemize}
+
+\textbf{Link to Clinical Prediction}
+
+In parallel, we will prepare model outputs and representations needed for WP3, including:
+
+\begin{itemize}
+  \item calibrated genomic prediction scores for resistance, tolerance, and virulence potential;
+  \item uncertainty estimates and feature attributions that can be integrated into hybrid clinical models;
+  \item candidate summary measures (e.g. composite scores) that can be combined with clinical covariates.
+\end{itemize}
+
+\textbf{Risks and Mitigation}
+
+There is a risk that genomic models alone may not capture all determinants of clinical outcome, 
+particularly where host factors or within-host dynamics dominate. WP2 is therefore explicitly 
+designed as a bridge to WP3: we will prioritise models that produce interpretable, well-calibrated scores 
+that can be combined with clinical data, rather than aiming for a purely genomic solution.
+
+\subsection*{WP3. Clinical antimicrobial resistance and resilience (SputaGen)}
+
+\textbf{Rationale and Objectives}
+
+
+
+It leverages the SputaGen and ACE-CF studies, both prospective observational cohort at CCLI for which clinical data 
+collection is complete and a sputum biobank is in place.
+
+The objectives of WP3 are to:
+
+\begin{itemize}
+  \item quantify how well conventional AST, genomic predictors, and hybrid models explain treatment response and resistance emergence;
+  \item understand the contribution of strain switching, polyclonality, and polymicrobial communities to treatment failure;
+  \item develop and test a hybrid clinical outcome model that integrates genomic and 
+  clinical information to support personalised antibiotic prescribing.
+\end{itemize}
+
+\textbf{SputaGen Cohort and Data}
+
+SputaGen and ACE-CF have togehter collected sputumm and samples on 642 courses of intravenous antibiotic treatments with 
+measurements of qualitative and quantitative clinical outcomes, antibiotics used, microbiology and drug susceptibility testing 
+and 1273 sputum samples before and during treatment. 
+
+\textbf{Analytical Plan}
+
+We will:
+
+\begin{itemize}
+  \item sequence cultured isolates and/or perform metagenomic sequencing on stored sputum samples 
+  in collaboration with Dr Josie Bryant at the Sanger Institute;
+  \item use RNA guides and lineage-specific markers where needed to track strain switching and polyclonality;
+  \item integrate genomic data with clinical trajectories, CAAT and symptom scores, a
+  nd time-to-next-exacerbation to define treatment success and failure;
+  \item build and compare models that predict outcome using:
+        \begin{enumerate}
+          \item conventional AST results alone;
+          \item genomic prediction scores from WP2 alone;
+          \item hybrid models combining genomic scores with clinical covariates and historical culture data.
+        \end{enumerate}
+\end{itemize}
+
+This will allow us to test whether genomic models provide added value beyond current practice, 
+and to identify which aspects of the genomic signal (e.g. predicted tolerance, plasmid content, strain switching) are most informative.
+
+\textbf{Risks and Mitigation}
+
+Key risks include incomplete culture-based capture of polyclonal or polymicrobial communities, 
+and potential batch effects in sequencing. We will mitigate these by:
+
+\begin{itemize}
+  \item incorporating metagenomic sequencing where feasible;
+  \item explicitly modelling polyclonality and strain switching using lineage-specific markers and SNP distances;
+  \item conducting robust QC and sensitivity analyses to ensure results are not driven by artefacts.
+\end{itemize}
+
+\subsection*{Research Environment, Collaborations, and Resources}
+
+This fellowship will be embedded in the Floto Laboratory and CCLI at the University of Cambridge, 
+with close collaboration with the Sanger Institute. The environment provides:
+
+\begin{itemize}
+  \item access to High Performance Computing (HPC) cluster at the University of Cambridge 
+  for large-scale genomic analyses and model training;
+  \item established pipelines for bacterial genome assembly, annotation, and GWAS;
+  \item clinical samples and data from the SputaGen and ACE-CF studies, including sputum samples and microbiology data.
+\end{itemize}
+
+Key collaborators include:
+
+\begin{itemize}
+  \item Dr Josie Bryant (Sanger Institute) for high-throughput sequencing and metagenomics;
+  \item Drs Wiemann, Bruchmann, Dinan, and others in the Floto Lab for bioinformatics and machine learning;
+  \item additional clinical and methodological mentors as outlined elsewhere in the application.
+\end{itemize}
+
+\subsection*{Timeline, Milestones, and Risk Management}
+
+A detailed Gantt chart is provided separately. In brief:
+
+\begin{itemize}
+  \item Years 1–2: completion of WP1 analyses and initial WP2 model benchmarking;
+  \item Years 2–3: refinement of predictive models, integration of structural/HGT insights, preparation for clinical validation;
+  \item Years 3–5: sequencing of SputaGen samples, development and testing of hybrid clinical outcome models, 
+  dissemination of tools and datasets.
+\end{itemize}
+
+Risks specific to each work package and their mitigations are described above. 
+Overall feasibility is underpinned by existing datasets, completed cohort recruitment, and a strong, multidisciplinary team.
+
+\subsection*{References}
+
+To be completed.
+
+\subsection*{Figures}
+
+Proposed figures are detailed in the main application and will include:
+global Klebsiella population structure and plasmid distribution; 
+pathoadaptive hotspots and HGT events; 
+Bacformer and complementary model performance; 
+and schematic overviews of the SputaGen clinical workflow and hybrid prediction pipeline.
+
+GANTT Chart:
+
+
+

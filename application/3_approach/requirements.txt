@@ -1,0 +1,20 @@
+% Requirements of Approach Section (2000 words maximum)
+%
+% Explain how you have designed your work so that it:
+% is effective and appropriate to achieve your objectives
+% is feasible, and comprehensively identifies any risks to delivery and how you will manage them
+% uses a clearly written and transparent methodology (if applicable)
+% summarises the previous work and describes how you will build on and progress this work (if applicable)
+% will maximise translation of outputs into outcomes and impacts
+% Within the Approach section we also expect you to:
+% demonstrate access to the appropriate services, facilities, infrastructure, or equipment to deliver the proposed work
+% provide a detailed and comprehensive project plan, including milestones and timelines in the form of a Gantt chart or diagram
+% explain who you intend to collaborate with at the host organisation and your plans for wider research collaborations (project partner details should be provided only in that section)
+% include details of work that will take place as part of the proposed fellowship at a second UK or overseas organisation (if applicable)
+% explain and justify how you will approach diversity and inclusion in the study population and follow the MRC embedding diversity in research design policy (if applicable)
+% show how you will use male and female animals or tissues and cells from female and male donors (if applicable) in your research. If you are not proposing to do this, justify why
+% explain and justify the inclusion of public partnerships (if applicable) and the added value these offer
+%
+% Including ‘References’ and ‘Images’
+% You are permitted to include ‘References’ and ‘Images’ within this section. If you choose to include these, you must refer to the guidance within the ‘Vision’ section. Failure to follow the guidance may result in your application being rejected.
+% You should detail any information regarding your statistical design in the 'Reproducibility and statistical design' section.
